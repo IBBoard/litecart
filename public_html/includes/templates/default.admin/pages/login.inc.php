@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 html {
   background: #f8f8f8;
 }
@@ -120,7 +120,7 @@ html.dark-mode body {
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   if ($('input[name="username"]').val() == '') {
     $('input[name="username"]').focus();
   } else {

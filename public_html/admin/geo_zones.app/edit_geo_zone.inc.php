@@ -134,7 +134,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('select[name$="new_zone[zone_code]"][disabled]').each(function() {
     $(this).html('<option value="">-- <?php echo functions::escape_js(language::translate('title_all_zones', 'All Zones')); ?> --</option>');
   });

@@ -161,7 +161,7 @@
     $log = ob_get_clean();
   }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 pre {
   white-space: pre-line;
 }

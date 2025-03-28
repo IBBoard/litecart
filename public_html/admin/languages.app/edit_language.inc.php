@@ -349,7 +349,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 $('input[name="url_type"]').change(function(){
   if ($('input[name="url_type"][value="domain"]:checked').length) {
     $('input[name="domain_name"]').prop('disabled', false);

@@ -148,7 +148,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('#box-create-account').on('change', ':input', function() {
     if ($(this).val() == '') return;
 

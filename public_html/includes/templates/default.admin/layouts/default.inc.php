@@ -5,12 +5,12 @@
 <meta charset="{snippet:charset}">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=1600">
-<link rel="stylesheet" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'css/variables.css'); ?>">
-<link rel="stylesheet" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'css/framework.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'css/app.min.css'); ?>">
+<link rel="stylesheet"<?php echo document::$nonce_attribute; ?> href="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'css/variables.css'); ?>">
+<link rel="stylesheet"<?php echo document::$nonce_attribute; ?> href="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'css/framework.min.css'); ?>">
+<link rel="stylesheet"<?php echo document::$nonce_attribute; ?> href="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'css/app.min.css'); ?>">
 {snippet:head_tags}
 {snippet:style}
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 :root {
   --default-text-size: <?php echo !empty($_COOKIE['font_size']) ? $_COOKIE['font_size'] : '14'; ?>px;
 }
@@ -137,10 +137,10 @@
 </div>
 
 {snippet:foot_tags}
-<script src="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'js/app.min.js'); ?>"></script>
+<script<?php echo document::$nonce_attribute; ?> src="<?php echo document::href_rlink(FS_DIR_TEMPLATE . 'js/app.min.js'); ?>"></script>
 {snippet:javascript}
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('button[name="font_size"]').click(function(){
     let new_size = parseInt($(':root').css('--default-text-size').split('px')[0]) + (($(this).val() == 'increase') ? 1 : -1);
     $(':root').css('--default-text-size', new_size + 'px');

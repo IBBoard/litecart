@@ -205,7 +205,7 @@
 
   functions::draw_lightbox();
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #tokens .token {
   padding: .5em 1em;
   border-radius: var(--border-radius);
@@ -419,7 +419,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 
   $('form[name="filter_form"]').on('input', ':input', function() {
     $('#tokens').html('');

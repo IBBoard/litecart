@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .btn-group.float-end {
   margin-inline-end: 1.5em;
   margin-top: 1.5em;

@@ -76,7 +76,7 @@
     exit;
   }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 form[name="filter_form"] li {
   vertical-align: middle;
 }
@@ -154,7 +154,7 @@ form[name="filter_form"] li {
   </table>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('select[name="country_code"] option[value=""]').text('-- <?php echo functions::escape_js(language::translate('title_all_countries', 'All Countries')); ?> --');
 
   $('select[name="country_code"]').change(function(){

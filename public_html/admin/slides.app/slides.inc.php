@@ -124,7 +124,7 @@
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('.data-table :checkbox').change(function() {
     $('#actions').prop('disabled', !$('.data-table :checked').length);
   }).first().trigger('change');

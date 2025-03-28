@@ -27,7 +27,7 @@
 // Number of Rows
   $num_rows = database::num_rows($orders_query);
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #widget-orders table {
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);

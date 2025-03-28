@@ -197,7 +197,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('#address-format-hint').click(function() {
     alert(
       '<?php echo language::translate('title_syntax', 'Syntax'); ?>:\n\n' +

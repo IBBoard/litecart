@@ -72,7 +72,7 @@
   breadcrumbs::add($xml->name);
   breadcrumbs::add(language::translate('title_configure', 'Configure'), document::link());
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 pre {
   background: #f9f9f9;
   border-radius: 4px;

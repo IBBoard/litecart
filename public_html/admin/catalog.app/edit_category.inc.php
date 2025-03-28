@@ -303,7 +303,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 
 // Init
 

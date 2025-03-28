@@ -92,7 +92,7 @@
     'information' => language::translate('title_information', 'Information'),
   ];
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 table tbody .toggle {
   width: 30px;
   display: inline-block;
@@ -297,7 +297,7 @@ table tbody .toggle {
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('input[name="query"]').keypress(function(e) {
     if (e.which == 13) {
       e.preventDefault();

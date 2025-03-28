@@ -82,7 +82,7 @@
   }
 
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #box-last-log pre {
   max-height: 800px;
   overflow-y: auto;

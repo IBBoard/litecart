@@ -147,7 +147,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('form[name="customer_form"]').on('input propertyChange', ':input', function() {
     if ($(this).val() == '') return;
     $('body').css('cursor', 'wait');

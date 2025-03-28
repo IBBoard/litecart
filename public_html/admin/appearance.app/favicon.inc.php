@@ -74,7 +74,7 @@
   }
 
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .icons {
   margin-bottom: 2em;
 }

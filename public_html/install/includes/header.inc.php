@@ -9,7 +9,7 @@
 <?php } else { ?>
 <link rel="stylesheet" href="../includes/templates/default.catalog/css/framework.min.css">
 <?php } ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 html {
   background: radial-gradient(ellipse at center, #fff 20%, #d2d7de 100%);
 }

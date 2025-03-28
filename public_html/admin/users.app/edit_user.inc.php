@@ -77,7 +77,7 @@
     }
   }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #app-permissions li,
 #widget-permissions li {
   padding: .25em 0;
@@ -219,7 +219,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('input[name="apps_toggle"]').change(function(){
     $('input[name^="apps"][name$="[status]"]').prop('disabled', !$(this).is(':checked'));
     $('input[name^="apps"][name$="[docs][]"]').prop('disabled', !$(this).is(':checked'));

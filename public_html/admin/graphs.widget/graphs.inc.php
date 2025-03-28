@@ -97,7 +97,7 @@
       if (!isset($daily_sales[date('N', $timestamp)]['average_sales'])) $daily_sales[date('N', $timestamp)]['average_sales'] = 0;
     }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #chart-sales-monthly {
   --chart-label-color: #999;
   --chart-a-color: #ececec;
@@ -178,7 +178,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 
 // Monthly Sales
   var data = {

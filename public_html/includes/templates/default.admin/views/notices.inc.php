@@ -21,6 +21,6 @@
 ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   setTimeout(function(){$('#notices').fadeOut('slow');}, 20e3);
 </script>

@@ -287,7 +287,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('.data-table :checkbox').change(function() {
     $('#actions').prop('disabled', !$('.data-table :checked').length);
   }).first().trigger('change');

@@ -283,7 +283,7 @@
 
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('form[name=form_add_product]').on('input', function(e) {
 
     var price = <?php echo (float)$price; ?>,

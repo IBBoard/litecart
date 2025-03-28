@@ -24,7 +24,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </main>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 // Queue Handler
 
   var updateQueue = [

@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .nav-tabs {
   background: transparent;
   border-bottom: none;
@@ -327,7 +327,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   <?php if (!empty($machine['cpu_usage']) || !empty($machine['memory_usage'])) { ?>
   setInterval(function(){
     $.ajax({

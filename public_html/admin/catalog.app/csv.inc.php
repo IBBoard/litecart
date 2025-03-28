@@ -1180,7 +1180,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('form[name="export_form"] input[name="type"]').change(function(){
     var dependencies = $(this).data('dependencies') ? $(this).data('dependencies').split(',') : [];
     $('form[name="export_form"] select[name="currency_code"]').prop('disabled', ($.inArray('currency', dependencies) === -1));

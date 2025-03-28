@@ -236,7 +236,7 @@
 
 </article>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   Number.prototype.toMoney = function() {
     var n = this,
       c = <?php echo (int)currency::$selected['decimals']; ?>,

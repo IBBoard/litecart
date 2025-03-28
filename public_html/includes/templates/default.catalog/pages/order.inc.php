@@ -1,6 +1,6 @@
 <meta name="viewport" content="width=1200">
 
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 body {
   display: flex;
   height: 100vh;
@@ -46,7 +46,7 @@ body {
 </div>
 <?php } ?>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 // Scroll to last comment
   $("#comments").animate({scrollTop: $('#comments').prop('scrollHeight')}, 2000);
 </script>

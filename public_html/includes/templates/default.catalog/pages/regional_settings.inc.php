@@ -69,7 +69,7 @@
 
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 $('select[name="country_code"]').change(function(){
 
   if ($(this).find('option:selected').data('postcode-format')) {

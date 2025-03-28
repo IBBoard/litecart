@@ -226,7 +226,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('input[name="name"]').on('input', function(e){
     $('input[name^="head_title"]').attr('placeholder', $(this).val());
     $('input[name^="h1_title"]').attr('placeholder', $(this).val());

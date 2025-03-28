@@ -272,7 +272,7 @@
 
 <script src="<?php echo WS_DIR_APP; ?>ext/jquery/jquery-3.7.1.min.js"></script>
 <script src="<?php echo WS_DIR_APP; ?>ext/featherlight/featherlight.min.js"></script>
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $.featherlight.autoBind = '[data-toggle="lightbox"]';
   $.featherlight.defaults.loading = '<div class="loader" style="width: 128px; height: 128px; opacity: 0.5;"></div>';
   $.featherlight.defaults.closeIcon = '&#x2716;';
@@ -281,7 +281,7 @@
 </script>
 <?php } ?>
 
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 ul {
   break-inside: avoid;
 }

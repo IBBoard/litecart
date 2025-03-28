@@ -148,7 +148,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   var new_value_index = 1;
   $('form[name="attribute_form"]').on('click', '.add', function(e) {
     e.preventDefault();

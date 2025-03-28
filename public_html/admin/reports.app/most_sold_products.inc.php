@@ -88,7 +88,7 @@
   $num_pages = ceil($num_rows/settings::get('data_table_rows_per_page'));
 ?>
 
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 form[name="filter_form"] li {
   vertical-align: middle;
 }
@@ -163,7 +163,7 @@ form[name="filter_form"] li {
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('select[name="manufacturer_id"]').on('change', function(){
     $('form[name="filter_form"]').submit();
   });

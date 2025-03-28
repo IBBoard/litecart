@@ -67,7 +67,7 @@
 // Pagination
   $num_pages = ceil($num_rows/settings::get('data_table_rows_per_page'));
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .warning {
   color: #f00;
 }
@@ -148,7 +148,7 @@
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('.data-table :checkbox').change(function() {
     $('#actions').prop('disabled', !$('.data-table :checked').length);
   }).first().trigger('change');

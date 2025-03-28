@@ -1,7 +1,7 @@
 <?php
   document::$layout = 'ajax';
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #modal-product-picker tbody tr {
   cursor: pointer;
 }
@@ -36,7 +36,7 @@
 
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('#modal-product-picker input[name="query"]').focus();
 
   var xhr_product_picker = null;

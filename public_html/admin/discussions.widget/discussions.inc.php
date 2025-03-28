@@ -26,7 +26,7 @@
           if (count($discussions) == 16) break;
         }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #widget-discussions .topics {
   columns: 4 275px;
 }

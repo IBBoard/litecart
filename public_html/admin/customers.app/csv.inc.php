@@ -284,7 +284,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('form[name="import_form"] input[name="insert"]').change(function(){
     $('form[name="import_form"] input[name="reset"]').prop('checked', false).prop('disabled', !$(this).is(':checked'));
   }).trigger('change');

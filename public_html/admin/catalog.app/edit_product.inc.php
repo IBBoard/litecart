@@ -151,7 +151,7 @@
 
   functions::draw_lightbox();
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #categories {
   max-height: 310px;
   overflow-y: auto;
@@ -541,7 +541,7 @@
             </table>
           </div>
         </div>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #tab-options li {
   background: #f9f9f9;
   padding: 1em;
@@ -819,7 +819,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 
 // Cross Referencing
 

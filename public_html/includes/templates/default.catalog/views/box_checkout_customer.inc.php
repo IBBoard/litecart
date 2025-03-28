@@ -221,7 +221,7 @@
   </div>
 </section>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   <?php if (!empty(notices::$data['errors'])) { ?>
   alert("<?php echo functions::escape_js(notices::$data['errors'][0]); notices::$data['errors'] = []; ?>");
   <?php } ?>

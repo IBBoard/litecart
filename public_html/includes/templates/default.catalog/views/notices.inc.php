@@ -37,7 +37,7 @@
 ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   setTimeout(function(){
     $('#notices .alert').not('.alert-danger');
   }, 20000);

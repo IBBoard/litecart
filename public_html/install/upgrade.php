@@ -361,7 +361,7 @@
 
 
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 html {
   display: table;
   width: 100%;

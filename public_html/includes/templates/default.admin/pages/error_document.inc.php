@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .code {
   font-size: 64px;
   font-weight: bold;

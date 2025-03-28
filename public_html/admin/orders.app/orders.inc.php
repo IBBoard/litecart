@@ -218,7 +218,7 @@
   }
 
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 table tr.bold {
   font-weight: bold;
 }
@@ -345,7 +345,7 @@ table .fa-star:hover {
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('input[name="query"]').keypress(function(e) {
     if (e.which == 13) {
       e.preventDefault();

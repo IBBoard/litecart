@@ -66,7 +66,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('body').on('input', '#box-filter form[name="filter_form"] :input', function(){
     $('#box-filter .tokens').html('');
 

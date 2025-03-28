@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .input-wrapper {
   position: relative;
 }
@@ -69,7 +69,7 @@
   </div>
 </section>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('textarea[maxlength]').on('input', function() {
     var remaining = $(this).attr('maxlength') - $(this).val().length;
     $(this).closest('.input-wrapper').find('.remaining').text(remaining);

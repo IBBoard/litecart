@@ -67,7 +67,7 @@
 
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('#modal-category-picker').on('click', 'a', function(e){
     e.preventDefault();
     $('.modal-body').load($(this).attr('href')+' .modal-body');

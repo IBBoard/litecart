@@ -90,7 +90,7 @@
   ];
 
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .form-group .checkbox {
   margin-top: .5em;
 }

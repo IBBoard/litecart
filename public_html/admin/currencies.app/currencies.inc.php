@@ -132,7 +132,7 @@
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('.data-table input[name^="currencies["]').change(function() {
     if ($('.data-table input[name^="currencies["]:checked').length > 0) {
       $('fieldset').prop('disabled', false);

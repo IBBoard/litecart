@@ -186,7 +186,7 @@
   <?php } ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $(':input[name="settings[store_zone_code]"]:disabled').prop('disabled', false);
   $(':input[name="settings[default_zone_code]"]:disabled').prop('disabled', false);
 </script>

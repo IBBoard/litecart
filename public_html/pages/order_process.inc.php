@@ -83,7 +83,7 @@
                 }
 
                 echo '</form>' . PHP_EOL
-                   . '<script>' . PHP_EOL;
+                   . '<script'.document::$nonce_attribute.'>' . PHP_EOL;
 
                 if (!empty($gateway['delay'])) {
                   echo '  var t=setTimeout(function(){' . PHP_EOL

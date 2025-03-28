@@ -36,7 +36,7 @@
           if (count($addons) == 16) break;
         }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #widget-addons .addons {
   columns: 4 275px;
 }

@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .logotype {
   max-width: 250px;
   max-height: 70px;
@@ -181,7 +181,7 @@ h1 {
   </ul>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   document.title = "<?php echo functions::escape_js(language::translate('title_packing_slip', 'Packing Slip')); ?> #<?php echo $order['id']; ?>";
 
   $('#actions button[name="print"]').click(function(){

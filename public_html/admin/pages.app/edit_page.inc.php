@@ -163,7 +163,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('input[name^="title"]').on('input', function(e){
     var language_code = $(this).attr('name').match(/\[(.*)\]$/)[1];
     $('.nav-tabs a[href="#'+language_code+'"]').css('opacity', $(this).val() ? 1 : .5);

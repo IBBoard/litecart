@@ -21,8 +21,8 @@
       ]]></find>
 
       <insert><![CDATA[
-<script async src="https://www.googletagmanager.com/gtag/js?id={setting:GA_TRACKING_ID}"></script>
-<script>
+<script<?php echo document::$nonce_attribute; ?> async src="https://www.googletagmanager.com/gtag/js?id={setting:GA_TRACKING_ID}"></script>
+<script<?php echo document::$nonce_attribute; ?>>
   window.dataLayer = window.dataLayer || [];
   function gtag(){window.dataLayer.push(arguments);}
   gtag('js', new Date());

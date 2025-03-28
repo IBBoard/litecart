@@ -184,7 +184,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('button[name="add_recipients"]').click(function(){
     $.featherlight('#modal-add-recipients');
     $('textarea[name="recipients"]').attr('placeholder', 'user@email.com\nanother@email.com');

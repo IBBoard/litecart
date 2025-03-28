@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #box-error-document .code {
   font-size: 64px;
   font-weight: bold;

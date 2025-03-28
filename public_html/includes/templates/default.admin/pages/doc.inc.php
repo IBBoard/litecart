@@ -1,4 +1,4 @@
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #main {
   --app-color: <?php echo $theme['color']; ?>;
 }

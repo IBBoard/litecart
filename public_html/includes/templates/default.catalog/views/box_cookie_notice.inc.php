@@ -13,7 +13,7 @@
 </div>
 <?php } ?>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   <?php if (!isset($_COOKIE['cookies_accepted'])) { ?>
   $('#box-cookie-notice button[name="accept_cookies"]').click(function(){
     $('#box-cookie-notice').fadeOut();

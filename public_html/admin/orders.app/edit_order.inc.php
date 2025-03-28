@@ -186,7 +186,7 @@
     $account_name = $customer->company ? $customer->company : $customer->firstname .' '. $customer->lastname;
   }
 ?>
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 #order-items tr.highlight {
   border: 1px #f00 solid;
 }
@@ -1014,7 +1014,7 @@
   </div>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   Number.prototype.toMoney = function() {
     var n = this,
       c = $('select[name="currency_code"] option:selected').data('decimals'),

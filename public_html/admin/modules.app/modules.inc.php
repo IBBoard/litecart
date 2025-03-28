@@ -218,7 +218,7 @@
   <?php echo functions::form_draw_form_end(); ?>
 </div>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
   $('#cron-example').click(function(){
     prompt("<?php echo language::translate('title_cron_job_configuration', 'Cron Job Configuration'); ?>", "*/5 * * * * curl --silent <?php echo document::ilink('push_jobs'); ?> &>/dev/null");
   });

@@ -193,7 +193,7 @@
   functions::draw_lightbox();
 ?>
 
-<style>
+<style<?php echo document::$nonce_attribute; ?>>
 .operation {
   background: #f8f8f8;
   padding: 1em;
@@ -705,7 +705,7 @@ textarea.warning {
   <?php } ?>
 </datalist>
 
-<script>
+<script<?php echo document::$nonce_attribute; ?>>
 // Tabs
 
   let new_tab_index = 1;

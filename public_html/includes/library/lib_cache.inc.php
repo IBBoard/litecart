@@ -333,7 +333,8 @@
       $_data = self::get($token, $max_age, $force_cache);
 
       if (!empty($_data)) {
-        echo $_data;
+        // Make sure we have a new nonce value in the cached data
+        echo str_replace(' nonce="'.$token['id'].'"', document::$nonce_attribute, $_data);
         return false;
       }
 
@@ -368,7 +369,9 @@
         return false;
       }
 
-      self::set($token, $_data);
+      // Replace the nonce with the token ID before caching to make it easy to find
+      // and harder to spoof than a fixed string
+      self::set($token, str_replace(document::$nonce, $token['id'], $_data));
 
       unset(self::$_recorders[$token['id']]);
 
