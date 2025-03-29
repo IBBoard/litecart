@@ -262,26 +262,26 @@
 ?>
 
 <?php if (!empty($installation_detected)) { ?>
-<link rel="stylesheet" href="<?php echo WS_DIR_APP; ?>ext/featherlight/featherlight.min.css">
+<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="<?php echo WS_DIR_APP; ?>ext/featherlight/featherlight.min.css">
 
-<div id="modal-warning-existing-installation" style="display: none; width: 320px;">
+<div id="modal-warning-existing-installation">
   <h2>Existing Installation Detected</h2>
   <p>Warning: An existing installation has been detected. It <u>will be deleted</u> if you continue!</p>
   <p><a class="btn btn-default" href="upgrade.php">Click here to upgrade instead</a></p>
 </div>
 
-<script src="<?php echo WS_DIR_APP; ?>ext/jquery/jquery-3.7.1.min.js"></script>
-<script src="<?php echo WS_DIR_APP; ?>ext/featherlight/featherlight.min.js"></script>
-<script<?php echo document::$nonce_attribute; ?>>
+<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" src="<?php echo WS_DIR_APP; ?>ext/jquery/jquery-3.7.1.min.js"></script>
+<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" src="<?php echo WS_DIR_APP; ?>ext/featherlight/featherlight.min.js"></script>
+<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">
   $.featherlight.autoBind = '[data-toggle="lightbox"]';
-  $.featherlight.defaults.loading = '<div class="loader" style="width: 128px; height: 128px; opacity: 0.5;"></div>';
+  $.featherlight.defaults.loading = '<div class="loader"></div>';
   $.featherlight.defaults.closeIcon = '&#x2716;';
   $.featherlight.defaults.targetAttr = 'data-target';
   $.featherlight('#modal-warning-existing-installation');
 </script>
 <?php } ?>
 
-<style<?php echo document::$nonce_attribute; ?>>
+<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">
 ul {
   break-inside: avoid;
 }
@@ -317,7 +317,7 @@ input[name="development_type"]:checked + div {
 
 <h2>System Requirements</h2>
 
-<div style="columns: 320px auto; margin-bottom: 2em;">
+<div id="system-requirements">
   <h3>PHP</h3>
 
   <ul>
@@ -464,7 +464,7 @@ input[name="development_type"]:checked + div {
 
     <div class="form-group col-md-6">
       <label>Table Prefix</label>
-      <input class="form-control" name="db_table_prefix" type="text" value="lc_" style="max-width: 50%;">
+      <input class="form-control short" name="db_table_prefix" type="text" value="lc_">
     </div>
 
     <div class="form-group col-md-6">
@@ -515,7 +515,7 @@ input[name="development_type"]:checked + div {
 
   <h3>Development</h3>
 
-  <div class="form-group" style="display: flex;">
+  <div class="form-group" id="development">
     <label>
       <input name="development_type" value="standard" type="radio" checked>
       <div>
@@ -577,7 +577,19 @@ input[name="development_type"]:checked + div {
     <label><input id="accept_terms" name="accept_terms" value="1" type="checkbox" required> I agree to the terms and conditions.</label>
   </div>
 
-  <input class="btn btn-success btn-block" type="submit" name="install" value="Install Now" onclick="if (document.getElementById('accept_terms').value != 1) return false; if(!confirm('This will now install LiteCart. Any existing databases tables will be overwritten with new data.')) return false;" style="font-size: 1.5em; padding: 0.5em;">
+  <input class="btn btn-success btn-block" id="install" type="submit" name="install" value="Install Now">
 </form>
 
+
+<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">
+  document.getElementById('install').onclick = () => {
+    if (document.getElementById('accept_terms').checked) {
+      alert('You must agree to the terms and conditions');
+      return false
+    }
+    if(!confirm('This will now install LiteCart. Any existing databases tables will be overwritten with new data.')) {
+      return false;
+    }
+  }
+</script>
 <?php require(__DIR__.'/includes/footer.inc.php'); ?>

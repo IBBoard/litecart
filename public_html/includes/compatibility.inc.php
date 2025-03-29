@@ -265,3 +265,7 @@
   if (!isset($_SERVER['HTTP_USER_AGENT'])) {
     $_SERVER['HTTP_USER_AGENT'] = '';
   }
+
+  if (!isset($_SERVER['CSP_NONCE'])) {
+    $_SERVER['CSP_NONCE'] = base64_encode(random_bytes(18));
+  }

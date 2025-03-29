@@ -1,15 +1,25 @@
+<?php
+  header('X-Frame-Options: SAMEORIGIN'); // Clickjacking Protection
+  header('Content-Security-Policy: frame-ancestors \'self\';'); // Clickjacking Protection
+  
+  $nonce = '\'nonce-'.$_SERVER['CSP_NONCE'].'\'';
+  header('Content-Security-Policy: default-src \'self\'; script-src '.$nonce.'; style-src '.$nonce);
+  header('Access-Control-Allow-Origin: https://'.$_SERVER['HTTP_HOST'].'/'); // Only allow HTTP POST data from own domain
+  header('Content-Security-Policy: form-action \'self\''); // Only allow HTTP POST data to own domain
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>LiteCart Installer</title>
-<link rel="stylesheet" href="../includes/templates/default.catalog/css/variables.css">
+<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="../includes/templates/default.catalog/css/variables.css">
+<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="includes/install.css">
 <?php if (is_file(__DIR__.'/../../includes/templates/default.catalog/css/framework.css')) { ?>
-<link rel="stylesheet" href="../includes/templates/default.catalog/css/framework.css">
+<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="../includes/templates/default.catalog/css/framework.css">
 <?php } else { ?>
-<link rel="stylesheet" href="../includes/templates/default.catalog/css/framework.min.css">
+<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="../includes/templates/default.catalog/css/framework.min.css">
 <?php } ?>
-<style<?php echo document::$nonce_attribute; ?>>
+<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">
 html {
   background: radial-gradient(ellipse at center, #fff 20%, #d2d7de 100%);
 }

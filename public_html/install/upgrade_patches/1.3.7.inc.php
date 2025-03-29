@@ -14,7 +14,7 @@
     ],
     FS_DIR_APP . 'includes/templates/*.catalog/views/box_site_footer.inc.php' => [
       [
-        'search'  => '#'. preg_quote('<?php list($account, $domain) = explode(\'@\', settings::get(\'store_email\')); echo "<script'.document::$nonce_attribute.'>document.write(\'<a href=\\"mailto:". $account ."\' + \'@\' + \'". $domain ."\\">". $account ."\' + \'@\' + \'". $domain ."</a>\');</script>"; ?>', '#') .'#',
+        'search'  => '#'. preg_quote('<?php list($account, $domain) = explode(\'@\', settings::get(\'store_email\')); echo "<script>document.write(\'<a href=\\"mailto:". $account ."\' + \'@\' + \'". $domain ."\\">". $account ."\' + \'@\' + \'". $domain ."</a>\');</script>"; ?>', '#') .'#',
         'replace' => '<a href="mailto:<?php echo settings::get(\'store_email\'); ?>"><?php echo settings::get(\'store_email\'); ?></a>',
       ],
     ],

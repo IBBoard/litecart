@@ -340,7 +340,7 @@
       #############################################
 
       echo '<h2>Complete</h2>' . PHP_EOL . PHP_EOL
-         . '<p style="font-weight: bold;">Upgrade complete! Please delete the <strong>~/install/</strong> folder.</p>' . PHP_EOL . PHP_EOL;
+         . '<p><strong>Upgrade complete! Please delete the <em>~/install/</em> folder.</strong></p>' . PHP_EOL . PHP_EOL;
 
       if (!empty($_REQUEST['redirect'])) {
         header('Location: '. $_REQUEST['redirect']);
@@ -361,7 +361,7 @@
 
 
 ?>
-<style<?php echo document::$nonce_attribute; ?>>
+<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">
 html {
   display: table;
   width: 100%;
@@ -444,7 +444,7 @@ input[name="development_type"]:checked + div {
     </div>
 
     <div class="form-group col-md-6">
-      <label style="margin-top: 2.25em;">
+      <label id="skip-updates">
         <input type="checkbox" class="form-check" name="skip_updates" value="0"> Skip downloading the latest updates
       </label>
     </div>
@@ -452,7 +452,7 @@ input[name="development_type"]:checked + div {
 
   <h2>Development</h2>
 
-  <div class="form-group" style="display: flex;">
+  <div class="form-group" id="development">
     <label>
       <input name="development_type" value="standard" type="radio" checked>
       <div>
@@ -482,7 +482,14 @@ input[name="development_type"]:checked + div {
 
   <p class="alert alert-danger">Backup your files <strong><u>and</u></strong> database <strong><u>before</u></strong> you continue!</p>
 
-  <button class="btn btn-success btn-block" type="submit" name="upgrade" value="true" onclick="if(!confirm('Warning! The procedure cannot be undone.')) return false;" style="font-size: 1.5em; padding: 0.5em;">Upgrade To <?php echo PLATFORM_NAME; ?> <?php echo PLATFORM_VERSION; ?></button>
+  <button class="btn btn-success btn-block" type="submit" id="upgrade" name="upgrade" value="true">Upgrade To <?php echo PLATFORM_NAME; ?> <?php echo PLATFORM_VERSION; ?></button>
 </form>
+<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">
+  document.getElementById("upgrade").onclick = () => {
+    if(!confirm('Warning! The procedure cannot be undone.')) {
+      return false;
+    }
+  }
+</script>
 <?php
   require('includes/footer.inc.php');

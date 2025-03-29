@@ -1,0 +1,8 @@
+#system-requirements { columns: 320px auto; margin-bottom: 2em; }
+input.short { max-width: 50%; }
+#development { display: flex }
+.btn-success.btn-block { font-size: 1.5em; padding: 0.5em; }
+#skip-updates { margin-top: 2.25em; }
+#modal-warning-existing-installation { display: none; width: 320px; }
+.featherlight-content > #modal-warning-existing-installation { display: block; }
+.featherlight-inner > .loader { width: 128px; height: 128px; opacity: 0.5; }
