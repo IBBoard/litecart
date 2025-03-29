@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vmod>
+  <name>CSP Compatibility</name>
+  <version>1.0</version>
+  <description>This optional VMod attempts to make other VMods and addons compatible with new Content Security Policy (CSP) rules.
+  
+NOTE: This is a brute-force approach for addons that have not updated to use CSP. Do not use it if you do not use any mods or they are all CSP-compatible as it does not verify that the scripts and styles cannot be manipulated after being notarised.</description>
+  <author>IBBoard</author>
+
+  <file name="admin/*/*.inc.php">
+    <!-- Add a Nonce to all admin scripts and styles - this assumes that they're all safe and don't have injections vectors. -->
+    <!-- This is safe for core functionality but may not be for other addons. -->
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[<script>]]></find>
+      <insert><![CDATA[<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+    </operation>
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[<style>]]></find>
+      <insert><![CDATA[<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+    </operation>
+  </file>
+  <file name="includes/templates/*.catalog/*/*.inc.php">
+    <!-- Add nonces to all hrefs, srcs and relevant tags in the templates -->
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[<link rel="stylesheet" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></find>
+      <insert><![CDATA[<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></insert>
+    </operation>
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[<script src="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></find>
+      <insert><![CDATA[<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" ]]></insert>
+    </operation>
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[<style>]]></find>
+      <insert><![CDATA[<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+    </operation>
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[<script>]]></find>
+      <insert><![CDATA[<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+    </operation>
+  </file>
+
+  <!-- Custom fixes for specific VMods -->
+  <file name="includes/templates/*.catalog/views/box_intro.inc.php">
+    <!-- Fix the intro box addon by making sure its templates get VMod checked -->
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[include FS_DIR_APP . 'includes/templates/'.$activeTemplate.'/views/box_intro_img_left.inc.php';]]></find>
+      <insert><![CDATA[include vmod::check(FS_DIR_APP . 'includes/templates/'.$activeTemplate.'/views/box_intro_img_left.inc.php');]]></insert>
+    </operation>
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[include FS_DIR_APP . 'includes/templates/'.$activeTemplate.'/views/box_intro_img_right.inc.php';]]></find>
+      <insert><![CDATA[include vmod::check(FS_DIR_APP . 'includes/templates/'.$activeTemplate.'/views/box_intro_img_right.inc.php');]]></insert>
+    </operation>
+    <operation method="replace" type="inline" onerror="ignore">
+      <find><![CDATA[include FS_DIR_APP . 'includes/templates/'.$activeTemplate.'/views/box_intro_txt_only.inc.php';]]></find>
+      <insert><![CDATA[include vmod::check(FS_DIR_APP . 'includes/templates/'.$activeTemplate.'/views/box_intro_txt_only.inc.php');]]></insert>
+    </operation>
+  </file>
+</vmod>
