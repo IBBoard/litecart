@@ -34,7 +34,7 @@
 
       // Use mod_cspnonce value or generate our own with the same "base64 encoded random bytes" approach
       self::$nonce = isset($_SERVER['CSP_NONCE']) ? $_SERVER['CSP_NONCE'] : base64_encode(random_bytes(18));
-      self::$nonce_attribute = ' nonce="'.$nonce.'"';
+      self::$nonce_attribute = ' nonce="'.self::$nonce.'"';
 
       event::register('before_capture', [__CLASS__, 'before_capture']);
       event::register('prepare_output', [__CLASS__, 'prepare_output']);
@@ -47,7 +47,7 @@
       header('Content-Security-Policy: frame-ancestors \'self\';'); // Clickjacking Protection
       
       $csp_header = settings::get('csp_enforce') ? 'Content-Security-Policy' : 'Content-Security-Policy-Report-Only';
-      $nonce = '\'nonce-'.document::$nonce.'\'';
+      $nonce = '\'nonce-'.self::$nonce.'\'';
       header($csp_header . ': default-src \'self\'; script-src '.$nonce.' \'strict-dynamic\'; style-src '.$nonce);
       // TODO: May need to find a way to add services like PayPal to `connect-src`
       // TODO: Add image and font host settings in case people use CDNs?
@@ -95,7 +95,7 @@
         '<link rel="icon" href="'. self::href_rlink(FS_DIR_STORAGE . 'images/favicons/favicon-256x256.png') .'" type="image/png" sizes="255x255">',
       ]);
       self::$snippets['head_tags']['fontawesome'] = '<link rel="stylesheet" href="'. self::href_rlink(FS_DIR_APP .'ext/fontawesome/font-awesome.min.css') .'">';
-      self::$snippets['foot_tags']['jquery'] = '<script'.document::$nonce_attribute.' src="'. self::href_rlink(FS_DIR_APP .'ext/jquery/jquery-3.7.1.min.js') .'"></script>';
+      self::$snippets['foot_tags']['jquery'] = '<script'.self::$nonce_attribute.' src="'. self::href_rlink(FS_DIR_APP .'ext/jquery/jquery-3.7.1.min.js') .'"></script>';
 
     // Hreflang
       if (!empty(route::$route['page'])) {
@@ -155,7 +155,7 @@
         'email' => !empty(customer::$data['email']) ? customer::$data['email'] : null,
       ];
 
-      self::$snippets['head_tags'][] = "<script'.document::$nonce_attribute.'>var _env = ". json_encode(self::$jsenv, JSON_UNESCAPED_SLASHES) .", config = _env;</script>";
+      self::$snippets['head_tags'][] = '<script'.self::$nonce_attribute.'>var _env = '. json_encode(self::$jsenv, JSON_UNESCAPED_SLASHES) .', config = _env;</script>';
 
     // Prepare title
       if (!empty(self::$snippets['title'])) {
@@ -172,14 +172,14 @@
 
     // Prepare styles
       if (!empty(self::$snippets['style'])) {
-        self::$snippets['style'] = '<style'.document::$nonce_attribute.'>' . PHP_EOL
+        self::$snippets['style'] = '<style'.self::$nonce_attribute.'>' . PHP_EOL
                                  . implode(PHP_EOL . PHP_EOL, self::$snippets['style']) . PHP_EOL
                                  . '</style>' . PHP_EOL;
       }
 
     // Prepare javascript
       if (!empty(self::$snippets['javascript'])) {
-        self::$snippets['javascript'] = '<script'.document::$nonce_attribute.'>' . PHP_EOL
+        self::$snippets['javascript'] = '<script'.self::$nonce_attribute.'>' . PHP_EOL
                                       . implode(PHP_EOL . PHP_EOL, self::$snippets['javascript']) . PHP_EOL
                                       . '</script>' . PHP_EOL;
       }
@@ -204,7 +204,7 @@
           $stylesheets[] = trim($match[1]);
         }, $matches[2]);
 
-        $matches[2] = preg_replace_callback('#<style nonce="'.preg_quote(document::$nonce).'">(.*?)</style>\R?#is', function($match) use (&$stylesheets, &$styles) {
+        $matches[2] = preg_replace_callback('#<style nonce="'.preg_quote(self::$nonce).'">(.*?)</style>\R?#is', function($match) use (&$stylesheets, &$styles) {
           $styles[] = trim($match[1]);
         }, $matches[2]);
 
@@ -221,7 +221,7 @@
             $javascripts[] = trim($match[1]);
         }, $matches[2]);
 
-        $matches[2] = preg_replace_callback('#<script nonce="'.preg_quote(document::$nonce).'"(?! data-fixed)(?:[^>]*\stype="(?:application|text)/javascript")?>(?!</script>)(.*?)</script>\R?#is', function($match) use (&$javascripts, &$javascript) {
+        $matches[2] = preg_replace_callback('#<script nonce="'.preg_quote(self::$nonce).'"(?! data-fixed)(?:[^>]*\stype="(?:application|text)/javascript")?>(?!</script>)(.*?)</script>\R?#is', function($match) use (&$javascripts, &$javascript) {
             $javascript[] = trim($match[1], "\r\n");
         }, $matches[2]);
 
@@ -246,7 +246,7 @@
           '#;}#' => '}',
         ];
 
-        $styles = '<style'.document::$nonce_attribute.'>' . PHP_EOL
+        $styles = '<style'.self::$nonce_attribute.'>' . PHP_EOL
                . '<!--/*--><![CDATA[/*><!--*/' . PHP_EOL
                . preg_replace(array_keys($search_replace), array_values($search_replace), implode(PHP_EOL . PHP_EOL, $styles)) . PHP_EOL
                . '/*]]>*/-->' . PHP_EOL
@@ -261,7 +261,7 @@
       }
 
       if (!empty($javascript)) {
-        $javascript = '<script'.document::$nonce_attribute.'>' . PHP_EOL
+        $javascript = '<script'.self::$nonce_attribute.'>' . PHP_EOL
                     . '<!--/*--><![CDATA[/*><!--*/' . PHP_EOL
                     . implode(PHP_EOL . PHP_EOL, $javascript) . PHP_EOL
                     . '/*]]>*/-->' . PHP_EOL
