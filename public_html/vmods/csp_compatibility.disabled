@@ -12,30 +12,30 @@ NOTE: This is a brute-force approach for addons that have not updated to use CSP
     <!-- This is safe for core functionality but may not be for other addons. -->
     <operation method="replace" type="inline" onerror="ignore">
       <find><![CDATA[<script>]]></find>
-      <insert><![CDATA[<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+      <insert><![CDATA[<script<?php echo document::$nonce_attribute?>>]]></insert>
     </operation>
     <operation method="replace" type="inline" onerror="ignore">
       <find><![CDATA[<style>]]></find>
-      <insert><![CDATA[<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+      <insert><![CDATA[<style<?php echo document::$nonce_attribute?>>]]></insert>
     </operation>
   </file>
   <file name="includes/templates/*.catalog/*/*.inc.php">
     <!-- Add nonces to all hrefs, srcs and relevant tags in the templates -->
     <operation method="replace" type="inline" onerror="ignore">
       <find><![CDATA[<link rel="stylesheet" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></find>
-      <insert><![CDATA[<link rel="stylesheet" nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" href="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></insert>
+      <insert><![CDATA[<link rel="stylesheet"<?php echo document::$nonce_attribute?> href="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></insert>
     </operation>
     <operation method="replace" type="inline" onerror="ignore">
       <find><![CDATA[<script src="<?php echo document::href_rlink(FS_DIR_TEMPLATE]]></find>
-      <insert><![CDATA[<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>" ]]></insert>
+      <insert><![CDATA[<script<?php echo document::$nonce_attribute?> ]]></insert>
     </operation>
     <operation method="replace" type="inline" onerror="ignore">
       <find><![CDATA[<style>]]></find>
-      <insert><![CDATA[<style nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+      <insert><![CDATA[<style<?php echo document::$nonce_attribute?>>]]></insert>
     </operation>
     <operation method="replace" type="inline" onerror="ignore">
       <find><![CDATA[<script>]]></find>
-      <insert><![CDATA[<script nonce="<?php echo $_SERVER['CSP_NONCE']; ?>">]]></insert>
+      <insert><![CDATA[<script<?php echo document::$nonce_attribute?>>]]></insert>
     </operation>
   </file>
 
