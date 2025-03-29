@@ -1,0 +1,3 @@
+INSERT INTO `lc_settings` (`setting_group_key`, `type`, `title`, `description`, `key`, `value`, `function`, `priority`, `date_updated`, `date_created`) VALUES
+('security', 'global', 'Enforce Content Security Policy', 'Enforce the Content Security Policy rather than just reporting issues.', 'csp_enforce', '1', 'toggle()', 20, NOW(), NOW()),
+('security', 'global', 'CSP Report URL', 'Optional URL of a summarisation service to report issues to.', 'csp_report_url', '', 'text()', 21, NOW(), NOW());
