@@ -33,7 +33,7 @@
       ];
 
       // Use mod_cspnonce value or generate our own with the same "base64 encoded random bytes" approach
-      self::$nonce = isset($_SERVER["CSP_NONCE"]) ? $_SERVER["CSP_NONCE"] : base64_encode(random_bytes(18));
+      self::$nonce = isset($_SERVER['CSP_NONCE']) ? $_SERVER['CSP_NONCE'] : base64_encode(random_bytes(18));
       self::$nonce_attribute = ' nonce="'.$nonce.'"';
 
       event::register('before_capture', [__CLASS__, 'before_capture']);
