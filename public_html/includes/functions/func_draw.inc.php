@@ -61,6 +61,7 @@
 
     $listing_category = new ent_view();
 
+    document::$snippets['head_tags']['listing_category'] = '<style'.document::$nonce_attribute.'>article.category img, .box-category .thumbnail img { aspect-ratio: '.str_replace(':', '/', settings::get('category_image_ratio')).';}</style>';
     list($width, $height) = functions::image_scale_by_width(480, settings::get('category_image_ratio'));
 
     $listing_category->snippets = [
@@ -87,6 +88,7 @@
 
     $listing_product = new ent_view();
 
+    document::$snippets['head_tags']['listing_product'] = '<style'.document::$nonce_attribute.'>article.product img, .box-product .thumbnail img { aspect-ratio: '.str_replace(':', '/', settings::get('product_image_ratio')).';}</style>';
     $sticker = '';
     if ((float)$product['campaign_price']) {
       $sticker = '<div class="sticker sale" title="'. language::translate('title_on_sale', 'On Sale') .'">'. language::translate('sticker_sale', 'Sale') .'</div>';

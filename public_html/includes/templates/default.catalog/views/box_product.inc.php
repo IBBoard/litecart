@@ -8,7 +8,7 @@
 
             <div class="col-xs-12">
               <a class="main-image thumbnail" href="<?php echo document::href_rlink(FS_DIR_STORAGE . $image['original']); ?>" data-toggle="lightbox" data-gallery="product">
-                <img class="img-responsive" src="<?php echo document::href_rlink(FS_DIR_STORAGE . $image['thumbnail']); ?>" srcset="<?php echo document::href_rlink(FS_DIR_STORAGE . $image['thumbnail']); ?> 1x, <?php echo document::href_rlink(FS_DIR_STORAGE . $image['thumbnail_2x']); ?> 2x" style="aspect-ratio: <?php echo $image['ratio']; ?>;" alt="" title="<?php echo functions::escape_html($name); ?>">
+                <img class="img-responsive" src="<?php echo document::href_rlink(FS_DIR_STORAGE . $image['thumbnail']); ?>" srcset="<?php echo document::href_rlink(FS_DIR_STORAGE . $image['thumbnail']); ?> 1x, <?php echo document::href_rlink(FS_DIR_STORAGE . $image['thumbnail_2x']); ?> 2x" alt="" title="<?php echo functions::escape_html($name); ?>">
                 <?php echo $sticker; ?>
               </a>
             </div>
@@ -16,7 +16,7 @@
             <?php foreach ($extra_images as $extra_image) { ?>
             <div class="col-xs-4">
               <a class="extra-image thumbnail" href="<?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['original']); ?>" data-toggle="lightbox" data-gallery="product">
-                <img class="img-responsive" src="<?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['thumbnail']); ?>" srcset="<?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['thumbnail']); ?> 1x, <?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['thumbnail_2x']); ?> 2x" style="aspect-ratio: <?php echo $image['ratio']; ?>;" alt="" title="<?php echo functions::escape_html($name); ?>">
+                <img class="img-responsive" src="<?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['thumbnail']); ?>" srcset="<?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['thumbnail']); ?> 1x, <?php echo document::href_rlink(FS_DIR_STORAGE . $extra_image['thumbnail_2x']); ?> 2x" alt="" title="<?php echo functions::escape_html($name); ?>">
               </a>
             </div>
             <?php } ?>
