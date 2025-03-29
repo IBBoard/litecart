@@ -35,7 +35,7 @@
     <?php include vmod::check(FS_DIR_APP . 'includes/boxes/box_cookie_notice.inc.php'); ?>
 
     <a id="scroll-up" class="hidden-print" href="#">
-      <?php echo functions::draw_fonticon('fa-chevron-circle-up fa-3x', 'style="color: #000;"'); ?>
+      <?php echo functions::draw_fonticon('fa-chevron-circle-up fa-3x'); ?>
     </a>
 
   <?php include vmod::check(FS_DIR_APP . 'includes/boxes/box_site_footer.inc.php'); ?>
