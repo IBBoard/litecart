@@ -45,7 +45,25 @@
 
       header('X-Frame-Options: SAMEORIGIN'); // Clickjacking Protection
       header('Content-Security-Policy: frame-ancestors \'self\';'); // Clickjacking Protection
+      
+      $csp_header = settings::get('csp_enforce') ? 'Content-Security-Policy' : 'Content-Security-Policy-Report-Only';
+      $nonce = '\'nonce-'.document::$nonce.'\'';
+      header($csp_header . ': default-src \'self\'; script-src '.$nonce.' \'strict-dynamic\'; style-src '.$nonce);
+      // TODO: May need to find a way to add services like PayPal to `connect-src`
+      // TODO: Add image and font host settings in case people use CDNs?
+
+      $report_to = settings::get('csp_report_url');
+      if ($report_to) {
+        // New method of setting report endpoint
+        header('Reporting-Endpoints: csp-endpoint="'.$report_to.'"');
+        // Set both headers so that we report for clickjacking even if we're not enforcing for everything else
+        // Supply both old and new values while browsers transition
+        header('Content-Security-Policy: report-to csp-endpoint; report-uri '.$report_to);
+        header('Content-Security-Policy-Report-Only: report-to csp-endpoint; report-uri '.$report_to);
+      }
+
       header('Access-Control-Allow-Origin: '. self::ilink('')); // Only allow HTTP POST data from own domain
+      header('Content-Security-Policy: form-action \'self\''); // Only allow HTTP POST data to own domain
       header('X-Powered-By: '. PLATFORM_NAME);
 
     // Set template
